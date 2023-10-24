@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+
 <head>
     <title>Activity 1. Canvas API - Drawing Shapes</title>
     <style type="text/css"></style>
 </head>
+
 <body background="black">
     <p id="text"></p>
 
@@ -18,64 +20,64 @@
         let H = N.height;
         var G;
         var speed = 0;
-        var XofBox = W/2-250;
-        var YofBox = H/2-50;
+        var XofBox = W / 2 - 250;
+        var YofBox = H / 2 - 50;
         let result = document.getElementById("text");
 
 
         const BG = [
-            "#FFB5A7","#FCD5CE","#F8EDEB","#F9DCC4","#FEC89A" ];
+            "#FFB5A7", "#FCD5CE", "#F8EDEB", "#F9DCC4", "#FEC89A"];
         var Rc;
-        var R,RR;
+        var R, RR;
         //default collor 0 = "#FB8B24" , 1 = "#E36414"
         function fox() {
-            G = n.createRadialGradient(XofBox,YofBox, 100, XofBox,YofBox,H/2);
+            G = n.createRadialGradient(XofBox, YofBox, 100, XofBox, YofBox, H / 2);
             G.addColorStop(0, "yellow");
             G.addColorStop(1, "#E36414");
-            if (XofBox<=W/2+250 && YofBox <= H/2-50) {
+            if (XofBox <= W / 2 + 250 && YofBox <= H / 2 - 50) {
                 XofBox += fps;
-            } else if(XofBox >= 700 && YofBox <= H/2+350){
+            } else if (XofBox >= 700 && YofBox <= H / 2 + 350) {
                 YofBox += fps;
-            } else if (YofBox >= 800 && XofBox >= W/2-250){
-            		XofBox -= fps;
-            } else if (YofBox >= W/2-50 && XofBox <= 198) {
-            		YofBox -= fps;
+            } else if (YofBox >= 800 && XofBox >= W / 2 - 250) {
+                XofBox -= fps;
+            } else if (YofBox >= W / 2 - 50 && XofBox <= 198) {
+                YofBox -= fps;
             }
-	
+
             function drawfont() {
-            n.font = "bold 35px cursive";
-            for(var i = 10; i < H; i+= 70){
-                    for(var x = -170; x < W; x+= 170){
-                    n.fillStyle = "#2E294E";
-                    n.fillText("Casquete", x+speed,i+30);
+                n.font = "bold 35px cursive";
+                for (var i = 10; i < H; i += 70) {
+                    for (var x = -170; x < W; x += 170) {
+                        n.fillStyle = "#2E294E";
+                        n.fillText("Casquete", x + speed, i + 30);
                     }
+                }
+                speed += 1;
+                if (speed == 170) {
+                    Rc = Math.floor(Math.random() * BG.length);
+                    speed = 0;
+                }
             }
-            speed += 1;
-            if (speed == 170){
-                Rc = Math.floor(Math.random()*BG.length);
-                speed = 0;
-            }
-            }
-            result.innerHTML = "X gradient: " + XofBox +"\nY gradient: " + YofBox;
+            result.innerHTML = "X gradient: " + XofBox + "\nY gradient: " + YofBox;
             n.fillStyle = BG[Rc];
-            n.fillRect (0,0,W,H);
+            n.fillRect(0, 0, W, H);
             drawfont();
             n.beginPath();
             n.fillStyle = "rgba(199, 175, 238, 0.45)";
             n.beginPath();
             n.lineWidth = 20;
             n.strokeStyle = "#2E294E";
-            n.moveTo(W/2-250,H/2-200);
-            n.quadraticCurveTo(W/2,H/2-500,W/2+250,H/2-200);
-            n.lineTo(W/2+250,H/2+350);
-            n.lineTo(W/2-250,H/2+350);
-            n.lineTo(W/2-250,H/2-200);
+            n.moveTo(W / 2 - 250, H / 2 - 200);
+            n.quadraticCurveTo(W / 2, H / 2 - 500, W / 2 + 250, H / 2 - 200);
+            n.lineTo(W / 2 + 250, H / 2 + 350);
+            n.lineTo(W / 2 - 250, H / 2 + 350);
+            n.lineTo(W / 2 - 250, H / 2 - 200);
             n.closePath();
-            n.fillStyle = "rgba(255, 255, 255, 0.5)";
+            n.fillStyle = "rgba(255, 255, 255, 0.5)"
             n.fill();
             n.stroke();
-            n.beginPath();      
-            n.moveTo(W/2-5,H/2);
+            n.beginPath();
+            n.moveTo(W / 2 - 5, H / 2);
             //n.lineTo(W/2-25,H/2-200); 
             n.stroke();
 
@@ -83,21 +85,21 @@
 
             //head
             n.beginPath();
-            n.arc(W/2, H/2, 10, 0, Math.PI, false);
-            n.quadraticCurveTo(W/2-25, H/2-55, W/2-90, H/2-55);
-            n.quadraticCurveTo(W/2-100, H/2-50, W/2-105, H/2-40);
-            n.quadraticCurveTo(W/2-95, H/2-70, W/2-90, H/2-70);
-            n.quadraticCurveTo(W/2-110, H/2-100, W/2-90, H/2-150);
+            n.arc(W / 2, H / 2, 10, 0, Math.PI, false);
+            n.quadraticCurveTo(W / 2 - 25, H / 2 - 55, W / 2 - 90, H / 2 - 55);
+            n.quadraticCurveTo(W / 2 - 100, H / 2 - 50, W / 2 - 105, H / 2 - 40);
+            n.quadraticCurveTo(W / 2 - 95, H / 2 - 70, W / 2 - 90, H / 2 - 70);
+            n.quadraticCurveTo(W / 2 - 110, H / 2 - 100, W / 2 - 90, H / 2 - 150);
 
-            n.lineTo(W/2-25, H/2-110);
+            n.lineTo(W / 2 - 25, H / 2 - 110);
 
-            n.quadraticCurveTo(W/2, H/2-115, W/2+25, H/2-110);
-            n.lineTo(W/2+90, H/2-150);
+            n.quadraticCurveTo(W / 2, H / 2 - 115, W / 2 + 25, H / 2 - 110);
+            n.lineTo(W / 2 + 90, H / 2 - 150);
 
-            n.quadraticCurveTo(W/2+110, H/2-100, W/2+90, H/2-70);
-            n.quadraticCurveTo(W/2+95, H/2-70, W/2+105, H/2-40);
-            n.quadraticCurveTo(W/2+100, H/2-50, W/2+90, H/2-55);
-            n.quadraticCurveTo(W/2+25, H/2-55, W/2+10, H/2);
+            n.quadraticCurveTo(W / 2 + 110, H / 2 - 100, W / 2 + 90, H / 2 - 70);
+            n.quadraticCurveTo(W / 2 + 95, H / 2 - 70, W / 2 + 105, H / 2 - 40);
+            n.quadraticCurveTo(W / 2 + 100, H / 2 - 50, W / 2 + 90, H / 2 - 55);
+            n.quadraticCurveTo(W / 2 + 25, H / 2 - 55, W / 2 + 10, H / 2);
             n.fillStyle = G;
             n.lineWidth = 3;
             n.fill();
@@ -107,59 +109,59 @@
 
             //ear
             n.beginPath();
-            n.moveTo(W/2-75, H/2-75);
-            n.quadraticCurveTo(W/2-90, H/2-100, W/2-80, H/2-125);
-            n.lineTo(W/2-40, H/2-100);
-            n.quadraticCurveTo(W/2-63, H/2-90, W/2-65, H/2-100);
-            n.quadraticCurveTo(W/2-63, H/2-90, W/2-75, H/2-75);
+            n.moveTo(W / 2 - 75, H / 2 - 75);
+            n.quadraticCurveTo(W / 2 - 90, H / 2 - 100, W / 2 - 80, H / 2 - 125);
+            n.lineTo(W / 2 - 40, H / 2 - 100);
+            n.quadraticCurveTo(W / 2 - 63, H / 2 - 90, W / 2 - 65, H / 2 - 100);
+            n.quadraticCurveTo(W / 2 - 63, H / 2 - 90, W / 2 - 75, H / 2 - 75);
 
-            n.moveTo(W/2+75, H/2-75);
-            n.quadraticCurveTo(W/2+90, H/2-100, W/2+80, H/2-125);
-            n.lineTo(W/2+40, H/2-100);
-            n.quadraticCurveTo(W/2+63, H/2-90, W/2+65, H/2-100);
-            n.quadraticCurveTo(W/2+63, H/2-90, W/2+75, H/2-75);
+            n.moveTo(W / 2 + 75, H / 2 - 75);
+            n.quadraticCurveTo(W / 2 + 90, H / 2 - 100, W / 2 + 80, H / 2 - 125);
+            n.lineTo(W / 2 + 40, H / 2 - 100);
+            n.quadraticCurveTo(W / 2 + 63, H / 2 - 90, W / 2 + 65, H / 2 - 100);
+            n.quadraticCurveTo(W / 2 + 63, H / 2 - 90, W / 2 + 75, H / 2 - 75);
             n.fillStyle = "white";
             n.fill();
 
             //lower part
             n.beginPath();
             n.fillStyle = G;
-            n.moveTo(W/2+85, H/2-15);
-            n.quadraticCurveTo(W/2+50, H/2-10, W/2+20, H/2+25);
-            n.lineTo(W/2+70, H/2+25);
-            n.quadraticCurveTo(W/2+65, H/2, W/2+85, H/2-15);
+            n.moveTo(W / 2 + 85, H / 2 - 15);
+            n.quadraticCurveTo(W / 2 + 50, H / 2 - 10, W / 2 + 20, H / 2 + 25);
+            n.lineTo(W / 2 + 70, H / 2 + 25);
+            n.quadraticCurveTo(W / 2 + 65, H / 2, W / 2 + 85, H / 2 - 15);
 
             //tail
-            n.moveTo(W/2-20, H/2+55);
-            n.quadraticCurveTo(W/2-45, H/2, W/2-80, H/2-15);
-            n.bezierCurveTo(W/2-55, H/2+70, W/2-300, H/2+140, W/2-170, H/2+300);
+            n.moveTo(W / 2 - 20, H / 2 + 55);
+            n.quadraticCurveTo(W / 2 - 45, H / 2, W / 2 - 80, H / 2 - 15);
+            n.bezierCurveTo(W / 2 - 55, H / 2 + 70, W / 2 - 300, H / 2 + 140, W / 2 - 170, H / 2 + 300);
             //toTip
-            n.bezierCurveTo(W/2+300, H/2+350, W/2+10, H/2+120, W/2+200, H/2+70);
-            n.quadraticCurveTo(W/2+80, H/2+5, W/2, H/2+60);
-            n.bezierCurveTo(W/2-80, H/2+120, W/2-10, H/2+250, W/2-150, H/2+250);
-            n.bezierCurveTo(W/2-30, H/2+240, W/2-75, H/2+90, W/2-20, H/2+55);
+            n.bezierCurveTo(W / 2 + 300, H / 2 + 350, W / 2 + 10, H / 2 + 120, W / 2 + 200, H / 2 + 70);
+            n.quadraticCurveTo(W / 2 + 80, H / 2 + 5, W / 2, H / 2 + 60);
+            n.bezierCurveTo(W / 2 - 80, H / 2 + 120, W / 2 - 10, H / 2 + 250, W / 2 - 150, H / 2 + 250);
+            n.bezierCurveTo(W / 2 - 30, H / 2 + 240, W / 2 - 75, H / 2 + 90, W / 2 - 20, H / 2 + 55);
             n.closePath();
             n.fill();
             n.stroke();
 
             //white tail
             n.beginPath();
-            n.moveTo(W/2+175, H/2+70);
-            n.quadraticCurveTo(W/2+55, H/2+10, W/2-20, H/2+100);
-            n.quadraticCurveTo(W/2, H/2+90, W/2+30, H/2+90);
-            n.quadraticCurveTo(W/2+10, H/2+125, W/2+25, H/2+170);
-            n.quadraticCurveTo(W/2+40, H/2+140, W/2+65, H/2+125);
-            n.quadraticCurveTo(W/2+70, H/2+180, W/2+110, H/2+195);
-            n.bezierCurveTo(W/2+120, H/2+190, W/2+80, H/2+100, W/2+175, H/2+70);
+            n.moveTo(W / 2 + 175, H / 2 + 70);
+            n.quadraticCurveTo(W / 2 + 55, H / 2 + 10, W / 2 - 20, H / 2 + 100);
+            n.quadraticCurveTo(W / 2, H / 2 + 90, W / 2 + 30, H / 2 + 90);
+            n.quadraticCurveTo(W / 2 + 10, H / 2 + 125, W / 2 + 25, H / 2 + 170);
+            n.quadraticCurveTo(W / 2 + 40, H / 2 + 140, W / 2 + 65, H / 2 + 125);
+            n.quadraticCurveTo(W / 2 + 70, H / 2 + 180, W / 2 + 110, H / 2 + 195);
+            n.bezierCurveTo(W / 2 + 120, H / 2 + 190, W / 2 + 80, H / 2 + 100, W / 2 + 175, H / 2 + 70);
             n.fillStyle = "white";
             n.fill();
-            n.strokeStyle ="#A3B18A";   
-            n.lineWidth = 4;        
+            n.strokeStyle = "#A3B18A";
+            n.lineWidth = 4;
             n.font = "60px Courier New";
-            n.strokeText("Stained Fox", W/2-205, H/2-160);
-        requestAnimationFrame(fox);
+            n.strokeText("Stained Fox", W / 2 - 205, H / 2 - 160);
+            requestAnimationFrame(fox);
         }
-        n.clearRect(0,0,W,H);
+        n.clearRect(0, 0, W, H);
         requestAnimationFrame(fox);
         let out = N.getContext('2d');
 
@@ -170,23 +172,23 @@
             out.strokeStyle = "#FE8534";
             out.lineJoin = "round";
             out.lineWidth = 10;
-            out.moveTo(W/2-105, H/2-40);
-            out.quadraticCurveTo(W/2-95, H/2-70, W/2-90, H/2-70);
-            out.quadraticCurveTo(W/2-110, H/2-100, W/2-90, H/2-150);
-            out.lineTo(W/2-25, H/2-110);
+            out.moveTo(W / 2 - 105, H / 2 - 40);
+            out.quadraticCurveTo(W / 2 - 95, H / 2 - 70, W / 2 - 90, H / 2 - 70);
+            out.quadraticCurveTo(W / 2 - 110, H / 2 - 100, W / 2 - 90, H / 2 - 150);
+            out.lineTo(W / 2 - 25, H / 2 - 110);
 
-            out.quadraticCurveTo(W/2, H/2-115, W/2+25, H/2-110);
-            out.lineTo(W/2+90, H/2-150);
+            out.quadraticCurveTo(W / 2, H / 2 - 115, W / 2 + 25, H / 2 - 110);
+            out.lineTo(W / 2 + 90, H / 2 - 150);
 
-            out.quadraticCurveTo(W/2+110, H/2-100, W/2+90, H/2-70);
-            out.quadraticCurveTo(W/2+95, H/2-70, W/2+105, H/2-40);
-            out.lineTo(W/2+85, H/2-15);
-            out.quadraticCurveTo(W/2+65, H/2,W/2+70, H/2+25);
-            out.lineTo(W/2+70, H/2+35);
-            out.quadraticCurveTo(W/2+125, H/2+30, W/2+200, H/2+70);
-            out.bezierCurveTo( W/2+10, H/2+120,W/2+300, H/2+350, W/2-170, H/2+300);
+            out.quadraticCurveTo(W / 2 + 110, H / 2 - 100, W / 2 + 90, H / 2 - 70);
+            out.quadraticCurveTo(W / 2 + 95, H / 2 - 70, W / 2 + 105, H / 2 - 40);
+            out.lineTo(W / 2 + 85, H / 2 - 15);
+            out.quadraticCurveTo(W / 2 + 65, H / 2, W / 2 + 70, H / 2 + 25);
+            out.lineTo(W / 2 + 70, H / 2 + 35);
+            out.quadraticCurveTo(W / 2 + 125, H / 2 + 30, W / 2 + 200, H / 2 + 70);
+            out.bezierCurveTo(W / 2 + 10, H / 2 + 120, W / 2 + 300, H / 2 + 350, W / 2 - 170, H / 2 + 300);
 
-            out.bezierCurveTo(W/2-300, H/2+140,W/2-55, H/2+70,  W/2-80, H/2-15);
+            out.bezierCurveTo(W / 2 - 300, H / 2 + 140, W / 2 - 55, H / 2 + 70, W / 2 - 80, H / 2 - 15);
             out.closePath();
             out.stroke();
             out.fill();
@@ -195,6 +197,6 @@
         let x = 0;
         let y = 0;
 
-        
+
     </script>
 </body>
