@@ -5,7 +5,7 @@ https://htmlpreview.github.io/?https://github.com/rakehoe/College-codes/blob/mai
 
 Activity 1.2 made for Ms. Suero:
 
-https://htmlpreview.github.io/?https://github.com/rakehoe/College-codes/blob/main/A1.2_SUERO.html
+https://htmlpreview.github.io/?https://github.com/rakehoe/College-codes/blob/main/A2_SUERO.html
 
 
 Activity 1.2 made for Mr. Garcia:
