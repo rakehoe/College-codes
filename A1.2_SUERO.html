@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html onmousemove="cursorPos(event)">
+
+<head>
+    <title>Panda</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="700" height="700" style="border:3px solid orange">
+    </canvas>
+    <p id="test"></p>
+    <script>
+        let r = document.getElementById("test");
+        const C = document.getElementById("myCanvas");
+        const ctx = C.getContext("2d");
+        const W = C.width;
+        const H = C.height;
+        const speed = .6;
+        const shrinkSpeed = .2;
+        const miliseconds = 100;
+        const seconds = 3; // in seconds?
+        var limitRight = false;
+        var limitLeft = false;
+        var xAxis = 0;
+        var cursorX = 0;
+        var shrink = 0;
+        var CurrentEar = 0;
+        const ShinkingTimer = seconds * miliseconds;
+
+        function cursorPos(event) {
+            cursorX = event.clientX - W / 2;
+        }
+        var timer = ShinkingTimer;
+        var CoCE = 0; // checker of current ear
+        function DrawPanda() {
+            r.innerHTML = timer + " -- " + CurrentEar;
+            timer -= 1;
+            if (timer <= 0) {
+                timer = ShinkingTimer;
+                CurrentEar = Math.floor(Math.random() * 3);
+                if (CoCE != CurrentEar) {
+                    CoCE = CurrentEar;
+                    shrink = 0;
+                }
+                
+            }
+            ctx.clearRect(0, 0, W, H);
+
+            switch (CurrentEar) {
+                case 1:
+                    //outer left ear
+                    ctx.fillStyle = "#ebe8e8";
+                    ctx.beginPath();
+                    ctx.arc(150, 150, 75 + shrink, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.fill();
+                    toShrink();
+                    //outer right ear
+                    ctx.fillStyle = "#ebe8e8";
+                    ctx.beginPath();
+                    ctx.arc(550, 150, 75, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.fill();
+                    break;
+
+                case 2:
+                    //outer right ear
+                    ctx.fillStyle = "#ebe8e8";
+                    ctx.beginPath();
+                    ctx.arc(550, 150, 75 + shrink, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.fill();
+                    toShrink();
+                    //outer left ear
+                    ctx.fillStyle = "#ebe8e8";
+                    ctx.beginPath();
+                    ctx.arc(150, 150, 75, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.fill();
+
+                    break;
+
+                default:
+                    //outer left ear
+                    ctx.fillStyle = "#ebe8e8";
+                    ctx.beginPath();
+                    ctx.arc(150, 150, 75, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.fill();
+
+                    //outer right ear
+                    ctx.fillStyle = "#ebe8e8";
+                    ctx.beginPath();
+                    ctx.arc(550, 150, 75, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.fill();
+                    break;
+            }
+
+            //inner left ear
+            ctx.beginPath();
+            ctx.fillStyle = "black";
+            ctx.arc(150, 150, 45, 0, Math.PI * 2, true);
+            ctx.stroke();
+            ctx.fill();
+            //inner right ear
+            ctx.beginPath();
+            ctx.arc(550, 150, 45, 0, Math.PI * 2, true);
+            ctx.stroke();
+            ctx.fill();
+
+            //big round box
+            ctx.beginPath();
+            ctx.fillStyle = "#ebe8e8";
+            ctx.moveTo(75, 300);
+            ctx.quadraticCurveTo(75, 150, 250, 150);
+            ctx.lineTo(425, 150);
+            ctx.quadraticCurveTo(625, 150, 625, 300);
+            ctx.lineTo(625, 500);
+            ctx.quadraticCurveTo(625, 650, 450, 650);
+            ctx.lineTo(250, 650);
+            ctx.quadraticCurveTo(75, 650, 75, 500);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+
+            //eyes
+            ctx.beginPath();
+            ctx.fillStyle = "#636363";
+            //left
+            ctx.arc(225, 350, 100, 0, Math.PI * 2, true);
+            ctx.fill();
+            //right
+            ctx.beginPath();
+            ctx.arc(475, 350, 100, 0, Math.PI * 2, true);
+            ctx.fill();
+            //inside
+            ctx.beginPath();
+            ctx.fillStyle = "black";
+            ctx.arc(225 + xAxis, 350, 15, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(475 + xAxis, 350, 15, 0, Math.PI * 2, true);
+            ctx.fill();
+            if (xAxis < cursorX) {
+                xAxis += 0;
+                toRight();
+            } else if (xAxis > cursorX) {
+                xAxis -= 0;
+                toLeft();
+            }
+            //limit xAxis = +-70
+            if (xAxis >= 30) {
+                xAxis = 30;
+            } else if (xAxis <= -30) {
+                xAxis = -30;
+            }
+
+
+            //nose
+            ctx.beginPath();
+            ctx.lineWidth = 8;
+            ctx.moveTo(350, 600);
+            ctx.lineTo(350, 450);
+            ctx.lineTo(325, 425);
+            ctx.lineTo(375, 425);
+            ctx.lineTo(350, 450);
+            ctx.fill();
+            ctx.moveTo(375, 575);
+            ctx.arc(350, 575, 25, 0, Math.PI, false);
+            ctx.stroke();
+
+            requestAnimationFrame(DrawPanda);
+        }
+        var shrinked = false;
+
+        function toShrink() {
+            if (shrink <= -25) {
+                shrinked = true;
+            } else if (shrink >= 0) {
+                shrinked = false;
+            }
+            if (shrink <= -25 || shrinked == true) {
+                shrink += shrinkSpeed;
+            } else if (shrink >= 0 || shrinked == false) {
+                shrink -= shrinkSpeed;
+            }
+        }
+
+        function toRight() {
+            xAxis += speed;
+        }
+
+        function toLeft() {
+            xAxis -= speed;
+        }
+
+        requestAnimationFrame(DrawPanda);
+    </script>
+</body>
+
+</html>
