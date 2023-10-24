@@ -9,9 +9,7 @@
 <body>
     <canvas id="myCanvas" width="700" height="700" style="border:3px solid orange">
     </canvas>
-    <p id="test"></p>
     <script>
-        let r = document.getElementById("test");
         const C = document.getElementById("myCanvas");
         const ctx = C.getContext("2d");
         const W = C.width;
@@ -34,7 +32,6 @@
         var timer = ShinkingTimer;
         var CoCE = 0; // checker of current ear
         function DrawPanda() {
-            r.innerHTML = timer + " -- " + CurrentEar;
             timer -= 1;
             if (timer <= 0) {
                 timer = ShinkingTimer;
