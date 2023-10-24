@@ -5,14 +5,15 @@
     <style type="text/css"></style>
 </head>
 
-<body background="black">
+<body bgcolor="grey">
     <p id="text"></p>
-
-    <canvas id="mainCanvas" width="900" height="900" style="border:10px solid #2E294E">
+    <center>
+    <canvas id="mainCanvas" width="900" height="900" style="border:10px solid rgb(50, 5, 68)">
     </canvas>
+    </center>
 
     <script type="text/javascript">
-
+        //#2E294E
         const N = document.getElementById("mainCanvas");
         const n = N.getContext("2d");
         const fps = 3;
@@ -32,7 +33,7 @@
         //default collor 0 = "#FB8B24" , 1 = "#E36414"
         function fox() {
             G = n.createRadialGradient(XofBox, YofBox, 100, XofBox, YofBox, H / 2);
-            G.addColorStop(0, "yellow");
+            G.addColorStop(0, "#fdcc60");
             G.addColorStop(1, "#E36414");
             if (XofBox <= W / 2 + 250 && YofBox <= H / 2 - 50) {
                 XofBox += fps;
@@ -48,7 +49,7 @@
                 n.font = "bold 35px cursive";
                 for (var i = 10; i < H; i += 70) {
                     for (var x = -170; x < W; x += 170) {
-                        n.fillStyle = "#2E294E";
+                        n.fillStyle = "rgba(50, 5, 68, .1)";
                         n.fillText("Casquete", x + speed, i + 30);
                     }
                 }
@@ -63,7 +64,7 @@
             n.fillRect(0, 0, W, H);
             drawfont();
             n.beginPath();
-            n.fillStyle = "rgba(199, 175, 238, 0.45)";
+            n.fillStyle = "rgba(199, 175, 238, 0.25)";
             n.beginPath();
             n.lineWidth = 20;
             n.strokeStyle = "#2E294E";
@@ -73,7 +74,7 @@
             n.lineTo(W / 2 - 250, H / 2 + 350);
             n.lineTo(W / 2 - 250, H / 2 - 200);
             n.closePath();
-            n.fillStyle = "rgba(255, 255, 255, 0.5)"
+            n.fillStyle = "rgba(255, 255, 255, 0.25)"
             n.fill();
             n.stroke();
             n.beginPath();
@@ -155,10 +156,15 @@
             n.bezierCurveTo(W / 2 + 120, H / 2 + 190, W / 2 + 80, H / 2 + 100, W / 2 + 175, H / 2 + 70);
             n.fillStyle = "white";
             n.fill();
-            n.strokeStyle = "#A3B18A";
-            n.lineWidth = 4;
-            n.font = "60px Courier New";
-            n.strokeText("Stained Fox", W / 2 - 205, H / 2 - 160);
+            n.beginPath();
+            n.lineWidth = 5;
+            n.strokeStyle = "#E36414";
+            n.font = "bold 60px Courier New";
+            n.strokeText("Stained Fox", W / 2 - 207, H / 2 - 180);
+            n.fillStyle = "#fdcc60";
+            n.font = "bold 60px Courier New";
+            n.fillText("Stained Fox", W / 2 - 202, H / 2 - 179);
+            n.stroke();
             requestAnimationFrame(fox);
         }
         n.clearRect(0, 0, W, H);
@@ -171,7 +177,7 @@
             out.fillStyle = "rgba(0, 0, 0, 0)";
             out.strokeStyle = "#FE8534";
             out.lineJoin = "round";
-            out.lineWidth = 10;
+            out.lineWidth = 7;
             out.moveTo(W / 2 - 105, H / 2 - 40);
             out.quadraticCurveTo(W / 2 - 95, H / 2 - 70, W / 2 - 90, H / 2 - 70);
             out.quadraticCurveTo(W / 2 - 110, H / 2 - 100, W / 2 - 90, H / 2 - 150);
