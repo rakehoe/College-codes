@@ -25,12 +25,14 @@ var axes = new THREE.AxesHelper(50);
 scene.add(axes);
 
 const ambient = new THREE.HemisphereLight(0xffffff, 0x080820, 2);
-scene.add(ambient);
+//scene.add(ambient);
+const light = new THREE.AmbientLight( 0x404040, 20 ); // soft white light
+scene.add( light );
 
 var cube = {};
 var dirlights = {}, helper = {}, dirhelper = {};
-for (var i = 0; i < 3; i++) {
-    dirlights[i] = new THREE.DirectionalLight(0xffffff, 5);
+for (var i = 0; i < 1; i++) {
+    dirlights[i] = new THREE.DirectionalLight(0xffffff, 3);
     dirlights[i].castShadow = true;
     dirlights[i].mapSize = (1080, 1080);
 
@@ -51,7 +53,8 @@ for (var i = 0; i < 3; i++) {
 
 //Creating plane
 var planeGeometry = new THREE.PlaneGeometry(250, 200);
-var planeMaterial = new THREE.MeshLambertMaterial({ color: 0xAAAAAA });
+var pTexture = new THREE.TextureLoader().load( "https://64.media.tumblr.com/dc2edca9282fd56cea08dd82c89735ee/94ddbf0048ceb448-3c/s1280x1920/cd8cbea9a23ccd226e5b0c0efd9418da9d7886aa.png" );
+var planeMaterial = new THREE.MeshLambertMaterial({ color: 0xAAAAAA, map: pTexture });
 var plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.rotation.x = -0.5 * Math.PI;
 plane.position.set(0, -4, 0);
