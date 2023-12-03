@@ -59,11 +59,13 @@
                 }
             }
             //result.innerHTML = "X gradient: " + XofBox + "\nY gradient: " + YofBox;
-            n.fillStyle = BG[Rc];
+            //n.fillStyle = BG[1];
             n.fillRect(0, 0, W, H);
-            drawfont();
+            //drawfont();
             n.beginPath();
             n.fillStyle = "rgba(199, 175, 238, 0.25)";
+			
+			/*
             n.beginPath();
             n.lineWidth = 20;
             n.strokeStyle = "#2E294E";
@@ -73,6 +75,8 @@
             n.lineTo(W / 2 - 250, H / 2 + 350);
             n.lineTo(W / 2 - 250, H / 2 - 200);
             n.closePath();
+			*/
+			
             n.fillStyle = "rgba(255, 255, 255, 0.25)"
             n.fill();
             n.stroke();
@@ -155,6 +159,8 @@
             n.bezierCurveTo(W / 2 + 120, H / 2 + 190, W / 2 + 80, H / 2 + 100, W / 2 + 175, H / 2 + 70);
             n.fillStyle = "white";
             n.fill();
+			
+			/*
             n.beginPath();
             n.lineWidth = 5;
             n.strokeStyle = "#E36414";
@@ -164,6 +170,7 @@
             n.font = "bold 60px Courier New";
             n.fillText("Stained Fox", W / 2 - 202, H / 2 - 179);
             n.stroke();
+			*/
             requestAnimationFrame(fox);
         }
         n.clearRect(0, 0, W, H);

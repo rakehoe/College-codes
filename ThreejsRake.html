@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>3D practice with animation</title>
+</head>
+
+<body bgcolor="grey">
+	<p id="Debug"></p>
+	<script src="three.js"></script>
+	<script>
+		let debug = document.getElementById("Debug");
+
+		let Color = [0x48CAE4, 0x00B4D8, 0x48D109, 0xA52A2A, 0xFFB703];
+
+		const WIDTH = window.innerWidth;
+		const HEIGHT = window.innerHeight;
+
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, 0.1, 1000);
+		const renderer = new THREE.WebGLRenderer();
+		renderer.setSize(WIDTH, HEIGHT);
+		document.body.appendChild(renderer.domElement);
+
+		const geometry = new THREE.BoxGeometry();
+		const geometry1 = new THREE.BoxGeometry(.5, .9, 30);
+		const geometry2 = new THREE.BoxGeometry(.8, .8, 16);
+		const geometry3 = new THREE.BoxGeometry(.5, .5, 15);
+		const geometry4 = new THREE.BoxGeometry(5, .5, 25);
+		let material = new THREE.MeshBasicMaterial({ color: Color[0] });
+		let material1 = new THREE.MeshBasicMaterial({ color: Color[2] });
+		let material2 = new THREE.MeshBasicMaterial({ color: Color[3] });
+		let material3 = new THREE.MeshBasicMaterial({ color: Color[4] });
+		let material4 = new THREE.MeshBasicMaterial({ color: Color[1] });
+		const cube = new THREE.Mesh(geometry, material);
+		const cube1 = new THREE.Mesh(geometry1, material1);
+		const cube2 = new THREE.Mesh(geometry2, material2);
+		const cube3 = new THREE.Mesh(geometry3, material3);
+		const cube4 = new THREE.Mesh(geometry4, material4);
+		scene.add(cube);
+		scene.add(cube1);
+		scene.add(cube2);
+		scene.add(cube3);
+		scene.add(cube4);
+		cube.position.x = -7;
+		cube1.position.x = -7;
+		cube1.position.y = 2;
+		cube2.position.x = -7;
+		cube2.position.y = 1.5;
+		cube3.position.x = -7;
+		cube3.position.y = -1.5;
+		cube4.position.x = -7;
+		cube4.position.y = -2;
+		camera.position.z = 4;
+
+		cube.rotation.x = 10;
+
+		cube.rotation.y = 10;
+
+		cube1.rotation.x = 10;
+
+		cube1.rotation.y = 10;
+
+		cube2.rotation.x = 10;
+
+		cube2.rotation.y = 10;
+
+		cube3.rotation.x = 10;
+
+		cube3.rotation.y = 10;
+
+		cube4.rotation.x = 10;
+
+		cube4.rotation.y = 10;
+
+		const animate = function () {
+			requestAnimationFrame(animate);
+			cube.position.x += 0.09;
+			if (cube.position.x >= 14) {
+				cube.position.x = -7;
+			}
+			//cube.rotation.x += 0.01;
+			cube.rotation.y += 0.08;
+
+
+			cube1.position.x += 0.08;
+			if (cube1.position.x >= 14) {
+				cube1.position.x = -7;
+			}
+			cube1.rotation.x += 0.09;
+			cube1.rotation.y += 0.08;
+
+
+			cube2.position.x += 0.02;
+			if (cube2.position.x >= 14) {
+				cube2.position.x = -7;
+			}
+			//cube2.rotation.x += 0.01;
+			cube2.rotation.y += 0.2;
+
+
+			cube3.position.x += 0.07;
+			if (cube3.position.x >= 14) {
+				cube3.position.x = -7;
+			}
+			//cube.rotation.x += 0.01;
+			cube3.rotation.y += 0.09;
+
+
+			cube4.position.x += 0.04;
+			if (cube4.position.x >= 14) {
+				cube4.position.x = -7;
+			}
+			//cube.rotation.x += 0.01;
+			cube4.rotation.y += 0.08;
+
+			//debug.innerHTML = count;
+			renderer.render(scene, camera);
+		};
+		animate();
+	</script>
+</body>
+
+</html>

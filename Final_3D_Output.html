@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title id="TITLE"></title>
+</head>
+
+<body>
+    <p id="Debug"></p>
+    <script src="three.js"></script>
+    <script>
+        let debug = document.getElementById("Debug");
+        const WIDTH = window.innerWidth;
+        const HEIGHT = window.innerHeight;
+        const ShowWires = false;
+
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(40, window.innerWidth /
+            window.innerHeight, 1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor(new THREE.Color(0x000000));
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        var axes = new THREE.AxesHelper(20);
+        scene.add(axes);
+
+        var spotLight = new THREE.SpotLight(0xFFFFFF);
+        spotLight.position.set(-30, 40, -20);
+        scene.add(spotLight)
+        spotLight.castShadow = true;
+        spotLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
+        spotLight.shadow.camera.far = 130;
+        spotLight.shadow.camera.near = 40;
+        spotLight.shadow.focus = 2.4;
+
+        var planeGeometry = new THREE.PlaneGeometry(100, 50);
+        var planeMaterial = new THREE.MeshStandardMaterial({
+            color: 0xAAAAAA
+        });
+        var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+        plane.rotation.x = -0.5 * Math.PI;
+        plane.position.set(0, 0, 0);
+        plane.receiveShadow = true;
+        scene.add(plane);
+        // create a cube
+        var cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
+        var cubeMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFF0000, wireframe: ShowWires
+        });
+        var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        cube.position.set(-4, 3, 0);
+        cube.castShadow = true;
+        cube.receiveShadow = false;
+        scene.add(cube);
+        // create a sphere
+        var sphereGeometry = new THREE.SphereGeometry(4, 20, 20);
+        var sphereMaterial = new THREE.MeshStandardMaterial({
+            color: 0x7777FF,
+            wireframe: ShowWires
+        });
+        var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        sphere.position.set(20, 4, 2);
+        sphere.castShadow = true;
+        scene.add(sphere);
+        // position and point the camera to the center of the scene
+        camera.position.y = 70;
+        //camera.position.set(0, 70, 10);
+        camera.lookAt(scene.position);
+        // render the scene
+        renderer.render(scene, camera);
+
+    </script>
+</body>
+
+</html>
