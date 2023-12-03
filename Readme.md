@@ -15,4 +15,4 @@ https://htmlpreview.github.io/?https://github.com/rakehoe/College-codes/blob/mai
 
 Final output:
 
-https://htmlpreview.github.io/?https://github.com/rakehoe/College-codes/blob/main/threeimporttest.html
+https://htmlpreview.github.io/?https://github.com/rakehoe/College-codes/blob/main/Final2.0/GA_output.html
