@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PointLight</title>
+</head>
+<body>
+    <p id="Debug"></p>
+	<script src="three.js"></script>
+	<script>
+        let debug = document.getElementById("Debug");
+        const WIDTH = window.innerWidth;
+        const HEIGHT = window.innerHeight;
+        const ShowWires = false;
+
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(45, window.innerWidth /
+            window.innerHeight, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        //renderer.setClearColor(new THREE.Color(0x000000));
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        var axes = new THREE.AxesHelper(20);
+        scene.add(axes);
+
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(0, 10, 4);
+        light.castShadow = true;
+        scene.add(light);
+
+        light.shadow.mapSize  = new THREE.Vector2(1024, 1024);
+        light.shadow.camera.near = 0.5;
+        light.shadow.camera.far = 1000;
+
+        const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
+        const sphereMaterial = new THREE.MeshStandardMaterial({color: 0xff0000});
+        const sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
+        sphere.castShadow = true;
+        scene.add( sphere );
+
+        const planeGeometry = new THREE.PlaneGeometry( 20, 20, 32, 32);
+        const planeMaterial = new THREE.MeshStandardMaterial({color: 0x00ff00});
+        const plane = new THREE.Mesh(planeGeometry,planeMaterial);
+        plane.receiveShadow = true;
+        scene.add ( plane );
+
+        //scene.add (camera);
+        const helper = new THREE.CameraHelper(light.shadow.camera);
+        scene.add (helper);
+
+			let count = 0;
+			const animate = function () {
+				requestAnimationFrame( animate );
+				//camera.position.x += 0.02;
+				camera.rotation.x += 0.02;
+				//camera.rotation.y += 0.02;
+				count += 0.02;
+				if (count >= 5) {
+					count = 0;
+					scene.add(camera);
+				}
+				debug.innerHTML = count;
+				renderer.render( scene, camera );
+			};
+			animate();
+	</script>
+</body>
+</html>
