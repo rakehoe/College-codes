@@ -1,0 +1,99 @@
+.head {
+    display: inline;
+    color: brown;
+}
+p, h1, h2 {
+    color: #000000;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0px;
+    width: 100%;
+}
+
+.bgimage > a > img{
+    width: 20%;
+    border-radius: 25%;
+    float: left;
+}
+
+.tabs {
+    display: block;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 3px solid black;
+}
+
+.tab_button {
+    text-decoration: none;
+    color: rgb(165, 71, 42);
+    size: 300px;
+    vertical-align: middle;
+}
+
+a> div{
+    text-indent: 20px;
+    background-color: #ffffff;
+    width: 175px;
+    height: 45px;
+    display: block;
+    margin-top: 2px;
+}
+
+hr{
+    display:block; 
+    border: 5px solid rgb(240, 104, 14);
+    width: 90%;
+}
+
+.content {
+    border: 2px solid black;
+    border-radius: 15px 15px 15px 15px;
+    margin-right: 30%;
+    margin-left: 30%;
+    text-align: left;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.title {
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+}
+
+.author {
+    font-size: medium;
+    font-style: italic;
+    text-align: center;
+}
+
+.story {
+    font-size: 15px;
+    font-weight: 100;
+    margin: 10px;
+}
+
+p#start {
+    text-indent: 50px;
+}
+
+footer {
+    color: #ffffff;
+    background: black;
+    text-align: center;
+    padding: 3% 5% 3% 3%;
+}
+
+/* hover animation */
+.tab_button>div:hover{
+    background-color: rgb(240, 104, 14);
+    color: #ffffff;
+    margin-bottom: 4px;
+}

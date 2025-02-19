@@ -1,0 +1,44 @@
+
+/** color to use
+/* 
+/* CSS HEX */
+--raisin-black: #221f21ff;
+--silver: #c2ccceff;
+--lion: #c49c84ff;
+--battleship-gray: #929490ff;
+
+/* CSS HSL */
+--raisin-black: hsla(320, 5%, 13%, 1);
+--silver: hsla(190, 11%, 78%, 1);
+--lion: hsla(23, 35%, 64%, 1);
+--battleship-gray: hsla(90, 2%, 57%, 1);
+
+/* SCSS HEX */
+$raisin-black: #221f21ff;
+$silver: #c2ccceff;
+$lion: #c49c84ff;
+$battleship-gray: #929490ff;
+
+/* SCSS HSL */
+$raisin-black: hsla(320, 5%, 13%, 1);
+$silver: hsla(190, 11%, 78%, 1);
+$lion: hsla(23, 35%, 64%, 1);
+$battleship-gray: hsla(90, 2%, 57%, 1);
+
+/* SCSS RGB */
+$raisin-black: rgba(34, 31, 33, 1);
+$silver: rgba(194, 204, 206, 1);
+$lion: rgba(196, 156, 132, 1);
+$battleship-gray: rgba(146, 148, 144, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #221f21ff, #c2ccceff, #c49c84ff, #929490ff);
+$gradient-right: linear-gradient(90deg, #221f21ff, #c2ccceff, #c49c84ff, #929490ff);
+$gradient-bottom: linear-gradient(180deg, #221f21ff, #c2ccceff, #c49c84ff, #929490ff);
+$gradient-left: linear-gradient(270deg, #221f21ff, #c2ccceff, #c49c84ff, #929490ff);
+$gradient-top-right: linear-gradient(45deg, #221f21ff, #c2ccceff, #c49c84ff, #929490ff);
+$gradient-bottom-right: linear-gradient(135deg, #221f21ff, #c2ccceff, #c49c84ff, #929490ff);
+$gradient-top-left: linear-gradient(225deg, #221f21ff, #c2ccceff, #c49c84ff, #929490ff);
+$gradient-bottom-left: linear-gradient(315deg, #221f21ff, #c2ccceff, #c49c84ff, #929490ff);
+$gradient-radial: radial-gradient(#221f21ff, #c2ccceff, #c49c84ff, #929490ff); */
+**/

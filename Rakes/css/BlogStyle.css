@@ -1,0 +1,91 @@
+.Head {
+    font-size: 50px;
+    grid-area: header;
+    font-weight: bolder;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.Menu {
+    padding: 0px;
+    grid-area: menu;
+    width: 250px;
+    background-color: bisque;
+
+}
+
+.Menu>.Animations{
+    position: fixed;
+    list-style-type:none;
+    width: 250;
+    padding: 0px;
+    margin-left: 2%;
+}
+
+.Animations>li{
+    height: 50px;
+}
+
+.Main {
+    grid-area: main;
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 95%;
+}
+
+.Right {
+    grid-area: right;
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    padding-right: 0px;
+    width: 90%;
+}
+
+.Foot {
+    grid-area: footer;
+}
+
+
+.grid-container {
+    /* grid-template-columns: repeat(fit, minmax(100px, auto)); */
+    display: grid;
+    grid-template-areas:
+        'menu header header '
+        'menu main right '
+        'menu footer footer ';
+    gap: 10px;
+    background-color: rgba(99, 136, 136, 0.418);
+}
+
+
+.sub-container,
+.video {
+    padding-left: 10px;
+    /* border: 2px solid rgb(10, 158, 18); */
+    width: 95%;
+    height: 400px;
+}
+
+.sub-container {
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: 600px;
+}
+
+#Mtext {
+    
+    text-align: left;
+    font-size: 18px;
+    text-indent: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+b {
+
+    font-size: 30px;
+    color: rgb(2, 3, 63);
+}
